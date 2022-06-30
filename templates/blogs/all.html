@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    All Blogs
+{% endblock title %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1>Blogs Written By You</h1>
+            <a href="/blogs/new"><button class="btn btn-success">New Blog</button></a>
+        </div>
+        <div class="blogs mt-5">
+            {% for blog in blogs %}
+            <div class="card">
+                <h5 class="card-header">On: {{blog['on']}}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{blog['heading']}}</h5>
+                    <p class="card-text">{{blog['content'][:100]}}...</p>
+                    <a href="/blog/{{blog['_id']}}" class="btn btn-primary">Open</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
